@@ -1,0 +1,59 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Now Showing</h2>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <label for="genreFilter">Filter by Genre:</label>
+      <select
+        class="form-control"
+        id="genreFilter"
+        [(ngModel)]="selectedGenre"
+        (change)="applyFilters()"
+      >
+        <option value="">All Genres</option>
+        <option *ngFor="let genre of genres" [value]="genre">
+          {{ genre }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label for="languageFilter">Filter by Language:</label>
+      <select
+        class="form-control"
+        id="languageFilter"
+        [(ngModel)]="selectedLanguage"
+        (change)="applyFilters()"
+      >
+        <option value="">All Languages</option>
+        <option *ngFor="let language of languages" [value]="language">
+          {{ language }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let movie of filteredMovies" class="col-md-4">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <h2 class="card-title">{{ movie.title }}</h2>
+          <p class="card-text"><strong>Genre:</strong> {{ movie.genre }}</p>
+          <p class="card-text">
+            <strong>Language:</strong> {{ movie.language }}
+          </p>
+          <p class="card-text">
+            <strong>Show Date:</strong> {{ movie.showDate }}
+          </p>
+          <p class="card-text"><strong>Price:</strong> £{{ movie.price }}</p>
+          <a
+            [routerLink]="'/movies/' + movie.id"
+            class="btn btn-outline-secondary"
+          >
+            Book Now</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

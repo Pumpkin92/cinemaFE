@@ -1,0 +1,37 @@
+<div class="container auth-container shadow-lg p-4 rounded bg-light w-50">
+  <h2 class="text-center text-primary">
+    {{ isLoginMode ? "Login" : "Register" }}
+  </h2>
+
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="username"
+      placeholder="Username"
+    />
+  </div>
+
+  <div class="mb-3">
+    <input
+      type="password"
+      class="form-control"
+      [(ngModel)]="password"
+      placeholder="Password"
+    />
+  </div>
+
+  <div class="text-center">
+    <button class="btn btn-primary w-100" (click)="authenticate()">
+      {{ isLoginMode ? "Login" : "Register" }}
+    </button>
+  </div>
+
+  <p class="toggle-text text-center mt-3 text-muted" (click)="toggleMode()">
+    {{
+      isLoginMode
+        ? "Need an account? Register"
+        : "Already have an account? Login"
+    }}
+  </p>
+</div>

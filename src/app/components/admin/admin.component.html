@@ -1,0 +1,139 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Admin Panel</h2>
+
+  <!-- Tabs for Movies & Cinemas -->
+  <ul class="nav nav-tabs" id="adminTabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="tab" href="#movies"
+        >Manage Movies</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#cinemas"
+        >Manage Cinemas</a
+      >
+    </li>
+  </ul>
+
+  <div class="tab-content mt-3">
+    <div class="tab-pane fade show active" id="movies">
+      <h3>🎥 Add Movie</h3>
+      <form class="row g-3">
+        <div class="col-md-4">
+          <label class="form-label" for="title">Movie Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="Title"
+            [(ngModel)]="newMovie.title"
+            name="title"
+          />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="genre">Genre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="genre"
+            placeholder="Genre"
+            [(ngModel)]="newMovie.genre"
+            name="genre"
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="lang" class="form-label">Language</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lang"
+            placeholder="Language"
+            [(ngModel)]="newMovie.language"
+            name="language"
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="date" class="form-label">Show Date</label>
+          <input
+            type="date"
+            class="form-control"
+            [(ngModel)]="newMovie.showDate"
+            name="showDate"
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="time" class="form-label">Showtimes</label>
+          <input
+            type="text"
+            id="time"
+            class="form-control"
+            placeholder="Showtimes "
+            [(ngModel)]="newMovie.showTimes"
+            name="showTimes"
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="price" class="form-label">Price</label>
+          <input
+            type="number"
+            id="price"
+            class="form-control"
+            placeholder="Price"
+            [(ngModel)]="newMovie.price"
+            name="price"
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="cinSelect" class="form-label">Choose Cinema</label>
+          <select
+            class="form-control"
+            [(ngModel)]="newMovie.cinemaId"
+            name="cinemaId"
+          >
+            <option *ngFor="let cinema of cinemas" [value]="cinema.id">
+              {{ cinema.name }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-12 text-center">
+          <button class="btn btn-success w-50" (click)="addMovie()">
+            Add Movie
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="tab-pane fade" id="cinemas">
+      <h3>Add Cinema</h3>
+      <form class="row g-3">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Cinema Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Name"
+            [(ngModel)]="newCinema.name"
+            name="name"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="location" class="form-label">Cinema Location</label>
+          <input
+            type="text"
+            id="location"
+            class="form-control"
+            placeholder="Location"
+            [(ngModel)]="newCinema.location"
+            name="location"
+          />
+        </div>
+        <div class="col-md-12 text-center">
+          <button class="btn btn-success w-50" (click)="addCinema()">
+            Add Cinema
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

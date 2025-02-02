@@ -1,0 +1,69 @@
+<div class="container mt-5 p-4 shadow-lg rounded bg-light" *ngIf="movie">
+  <h2 class="text-center text-primary">{{ movie.title }}</h2>
+  <p class="text-muted text-center">
+    <strong>Genre:</strong> {{ movie.genre }} | <strong>Language:</strong>
+    {{ movie.language }}
+  </p>
+  <p class="text-center"><strong>Show Date:</strong> {{ movie.showDate }}</p>
+  <p class="text-center">
+    <strong>Price per Ticket:</strong> £{{ movie.price }}
+  </p>
+
+  <div class="showtime-selection mb-3 text-center">
+    <label for="showtime" class="form-label"
+      ><strong>Select Showtime:</strong></label
+    >
+    <select
+      id="showtime"
+      class="form-select w-50 mx-auto"
+      [(ngModel)]="selectedShowtime"
+    >
+      <option *ngFor="let time of showTimesArray" [value]="time">
+        {{ time }}
+      </option>
+    </select>
+  </div>
+
+  <div class="text-center mb-3">
+    <label for="cinema" class="form-label"
+      ><strong>Select Cinema:</strong></label
+    >
+    <select
+      id="cinema"
+      class="form-select w-50 mx-auto"
+      [(ngModel)]="selectedCinema"
+    >
+      <option *ngFor="let cinema of availableCinemas" [value]="cinema.id">
+        {{ cinema.name }} ({{ cinema.location }})
+      </option>
+    </select>
+  </div>
+
+  <div class="ticket-purchase text-center mb-3">
+    <label for="tickets" class="form-label"
+      ><strong>Number of Tickets:</strong></label
+    >
+    <input
+      type="number"
+      id="tickets"
+      class="form-control w-25 mx-auto text-center"
+      [(ngModel)]="numberOfTickets"
+      min="1"
+    />
+  </div>
+
+  <div class="text-center">
+    <button class="btn btn-outline-secondary btn-lg me-2" (click)="buyTicket()">
+      Buy Ticket
+    </button>
+    <button class="btn btn-outline-secondary btn-lg" routerLink="/movies">
+      Back to Movies
+    </button>
+  </div>
+
+  <div *ngIf="totalPrice !== null" class="alert alert-success mt-4 text-center">
+    <p class="fw-bold">Booking Confirmed!</p>
+    <p><strong>Total Price:</strong> £{{ totalPrice }}</p>
+    <p><strong>Please pay on arrival.</strong></p>
+  </div>
+</div>
